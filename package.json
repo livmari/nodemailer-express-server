@@ -1,5 +1,5 @@
 {
-  "name": "mail-server",
+  "name": "mail-sender-api",
   "version": "1.0.0",
   "description": "Expressjs server that uses the Nodemailer api to send outgoing emails",
   "main": "app.js",
