@@ -5,12 +5,16 @@ const port = process.env.PORT || 6174
 const express = require('express')
 const app = express()
 
+// Increase API security by defining various HTTP headers
+const helmet = require('helmet')
+app.use(helmet())
+
 // parse application/json
 app.use(express.json())
 
 // HTTP request logger
 const morgan = require('morgan')
-app.use(morgan('dev'))
+app.use(morgan('combined'))
 
 // Enabling cross-origin resource sharing
 const cors = require('cors')
