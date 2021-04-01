@@ -10,7 +10,6 @@ const nodemailer = require('nodemailer')
 module.exports = {
   postMail: async (req, res, next) => {
     try {
-      const { name, email, subject, text } = req.body
       const websiteName = 'Website name'
 
       // Create reusable transporter object using the default SMTP transport
@@ -19,49 +18,49 @@ module.exports = {
         port: 587,
         secure: false, // true for 465, false for other ports
         auth: {
-          user: 'marc98@ethereal.email', // Generated ethereal user
-          pass: 'DeTcFVjAsURRYbxtUm', // Generated ethereal password
+          user: `${req.body.recieverEmail}`, // Generated ethereal user
+          pass: `${req.body.recieverPassword}`, // Generated ethereal password
         },
       })
       ;``
       const message = {
-        from: `${req.body.name} 👻 <${req.body.email}>`, // Sender address
+        from: `${req.body.senderName} 👻 <${req.body.senderEmail}>`, // Sender address
         to: 'marc98@ethereal.email', // List of receivers
-        subject: `New message from: ${req.body.name}`, // Subject line
+        subject: `New message from: ${req.body.senderName}`, // Subject line
 
         // Plain text body
         text: `\n
                     A new message was sent to you from ${websiteName}\n
-                    Name: ${req.body.name}\n
-                    Email: ${req.body.email}\n
+                    Name: ${req.body.senderName}\n
+                    Email: ${req.body.senderEmail}\n
                     Subject: ${req.body.subject}\n
-                    ${req.body.text}\n`,
+                    ${req.body.message}\n`,
 
         // Html body
         html: `<h1>A new message was sent to you from ${websiteName} 🥳</h1>
-                    <table style="text-align: left">
-                    <tr>
-                        <th>Name:</th>
-                        <td>${req.body.name}</td>
-                    </tr>
-                    <tr>
-                        <th>Email:</th>
-                        <td>${req.body.email}</td>
-                    </tr>
-                    <tr>
-                        <th>Subject:</th>
-                        <td>${req.body.subject}</td>
-                    </tr>
-                    </table>
-                    <br/>
-                    <table style="width: 100%; text-align: left">
-                        <tr>
-                            <th>Message:</th>
-                        </tr>
-                        <tr>
-                            <td>${req.body.text}</td>
-                        </tr>
-                    </table>`,
+          <table style="text-align: left">
+          <tr>
+              <th>Name:</th>
+              <td>${req.body.senderName}</td>
+          </tr>
+          <tr>
+              <th>Email:</th>
+              <td>${req.body.senderEmail}</td>
+          </tr>
+          <tr>
+              <th>Subject:</th>
+              <td>${req.body.subject}</td>
+          </tr>
+          </table>
+          <br/>
+          <table style="width: 100%; text-align: left">
+              <tr>
+                  <th>Message:</th>
+              </tr>
+              <tr>
+                  <td>${req.body.message}</td>
+              </tr>
+          </table>`,
       }
 
       // Send mail with defined transport object
