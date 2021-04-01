@@ -1,6 +1,6 @@
-# Tiny mail sender API
+# Express server with nodemailer endpoint
 
-This repository contains a single api endpoint that takes json data and sends an email to a pre-defined email address.
+This repository contains an express server with a single api endpoint that takes json data and sends an email to a pre-defined email address.
 
 📚 The api uses **[Nodemailer](https://nodemailer.com/about/)** to send the email, and **[Express](https://expressjs.com/)** to handle the api requests and responses.
 
