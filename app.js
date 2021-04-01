@@ -1,22 +1,19 @@
-const express = require('express')
-const morgan = require('morgan')
-const cors = require('cors')
-
-const mailRoute = require('./routes/mail')
-
 // Declaring the port to listen to
 const port = process.env.PORT || 6174
 
 // Create Express app
+const express = require('express')
 const app = express()
 
 // parse application/json
 app.use(express.json())
 
 // HTTP request logger
+const morgan = require('morgan')
 app.use(morgan('dev'))
 
 // Enabling cross-origin resource sharing
+const cors = require('cors')
 app.options('*', cors())
 app.use(cors())
 
@@ -33,6 +30,7 @@ app.get('/', async (req, res, next) => {
   }
 })
 
+const mailRoute = require('./routes/mail')
 app.use('/mail', mailRoute)
 
 // Not found message when fails happen
