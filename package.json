@@ -1,11 +1,11 @@
 {
-  "name": "mail-sender-api",
+  "name": "nodemailer-express-server",
   "version": "1.0.0",
   "description": "Expressjs server that uses the Nodemailer api to send outgoing emails",
   "main": "app.js",
   "repository": "https://github.com/alter-dev/mail-server.git",
-  "author": "Liv Mari Lervik Alterskjaer",
-  "license": "UNLICENSED",
+  "author": "Liv Mari (github.com/livmari)",
+  "license": "MIT",
   "private": true,
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -16,6 +16,6 @@
     "nodemon": "^2.0.7"
   },
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "nodemon app"
   }
 }
